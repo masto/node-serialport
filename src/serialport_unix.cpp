@@ -445,9 +445,20 @@ static io_registry_entry_t GetUsbDevice(char* pathName)
 {
     io_registry_entry_t device = 0;
 
-    CFMutableDictionaryRef classesToMatch = IOServiceMatching(kIOUSBDeviceClassName);
+    CFMutableDictionaryRef classesToMatch = IOServiceMatching("IOUSBHostDevice");
     if (classesToMatch != NULL)
     {
+      CFMutableDictionaryRef mySubDictionary;
+
+      mySubDictionary = CFDictionaryCreateMutable(kCFAllocatorDefault, 0,
+                                                  &kCFTypeDictionaryKeyCallBacks,
+                                                  &kCFTypeDictionaryValueCallBacks);
+      CFDictionarySetValue(mySubDictionary, CFSTR("USB Product Name"),
+                           CFSTR("Generic CDC"));
+
+      CFDictionarySetValue(classesToMatch,
+                           CFSTR(kIOPropertyMatchKey),
+                           mySubDictionary);
         io_iterator_t matchingServices;
         kern_return_t kernResult = IOServiceGetMatchingServices(kIOMasterPortDefault, classesToMatch, &matchingServices);
         if (KERN_SUCCESS == kernResult)
