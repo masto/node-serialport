@@ -14,7 +14,7 @@
 
 [![Build Status](https://travis-ci.org/voodootikigod/node-serialport.png?branch=master)](https://travis-ci.org/voodootikigod/node-serialport)
 [![Gitter chat](https://badges.gitter.im/voodootikigod/node-serialport.png)](https://gitter.im/voodootikigod/node-serialport)
-[![Dependency Status](https://david-dm.org/voodootikigod/node-serialport.png)
+[![Dependency Status](https://david-dm.org/voodootikigod/node-serialport.png)](https://david-dm.org/voodootikigod/node-serialport)
 
 For all discussions, designs, and clarifications, we recommend you join our Gitter Chat room: [https://gitter.im/voodootikigod/node-serialport](https://gitter.im/voodootikigod/node-serialport)
 
@@ -126,17 +126,11 @@ npm install serialport
  * Download and install node.js:
 
 ```bash
-   wget http://nodejs.org/dist/v0.10.16/node-v0.10.16-linux-arm-pi.tar.gz
-   tar xvfz node-v0.10.16-linux-arm-pi.tar.gz
-   sudo mv node-v0.10.16-linux-arm-pi /opt/node/
+   wget https://node-arm.herokuapp.com/node_archive_armhf.deb
+   sudo dpkg -i node_archive_armhf.deb
 ```
 
- * Set up your paths correctly:
-
-```bash
-   echo 'export PATH="$PATH:/opt/node/bin"' >> ~/.bashrc
-   source ~/.bashrc
-```
+More information can be found at [node-arm](http://node-arm.herokuapp.com/).
 
  * Install using npm, note this will take a while as it is actually compiling code and that ARM processor is getting a workout.
 
